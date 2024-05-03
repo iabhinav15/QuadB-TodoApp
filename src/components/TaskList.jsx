@@ -42,6 +42,7 @@ const TaskList = () => {
 
   // Delete a task
   const handleDeleteTask = (taskId) => {
+    window.confirm("Are you sure you want to delete this task?") && 
     dispatch(deleteTask(taskId));
   };
 
