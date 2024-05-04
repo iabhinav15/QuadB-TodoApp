@@ -6,6 +6,7 @@ import { deleteTask, editTask, toggleTask } from '../redux/tasksSlice';
 import { empty } from '../assets';
 import EditTask from './EditTask';
 import TaskBar from './TaskBar';
+import { addDeletedTask } from '../redux/deletedTaskSlice';
 
 
 const TaskList = () => {
@@ -44,6 +45,8 @@ const TaskList = () => {
   const handleDeleteTask = (taskId) => {
     window.confirm("Are you sure you want to delete this task?") && 
     dispatch(deleteTask(taskId));
+    const task = tasks.find(task => task.id === taskId);
+    dispatch(addDeletedTask(task));
   };
 
   // Toggle task completion status

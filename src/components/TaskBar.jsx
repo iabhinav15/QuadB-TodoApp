@@ -13,7 +13,7 @@ import { RiDeleteBinLine } from 'react-icons/ri'
 const TaskBar = ({task, handleToggleTask, handleEditTask, handleDeleteTask}) => {
 
   return (
-    <div className={`flex items-center justify-between px-3 py-2 rounded ${Date.parse(task.dueDate) < Date.now() ? "bg-red-500": task.color }`}>
+    <div className={`flex items-center justify-between px-3 py-2 rounded ${ task.completed === true ? "bg-green-400" :  Date.parse(task.dueDate) < Date.now() ? "bg-red-500": "bg-gray-500" }`}>
       <div className="flex items-center">
         {/* Checkbox to toggle task completion status */}
         <input

@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../redux/tasksSlice';
-import ReactDatePicker from 'react-datepicker';
 import { DatePicker } from '@mui/x-date-pickers';
 
 const TaskInput = () => {
@@ -30,11 +29,13 @@ const TaskInput = () => {
         onChange={(e) => setTask(e.target.value)}
         placeholder="Add a new task..."
       />
+
+      <DatePicker value={dueDate} onChange={(newValue) => setDueDate(newValue)} />
+      
       {/* Add new task button */}
-      <button type="submit" className="bg-gray-500 text-white text-base font-semibold px-4 py-2 rounded" onClick={handleAddTask}>
+      <button type="submit" className="bg-gray-500 text-white text-base font-semibold px-4 py-2 ml-3 rounded" onClick={handleAddTask}>
         Add Task
       </button>
-      <DatePicker value={dueDate} onChange={(newValue) => setDueDate(newValue)} />
     </form>
   );
 };

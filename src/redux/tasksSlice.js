@@ -9,7 +9,7 @@ const tasksSlice = createSlice({
 
     // Add a new task
     addTask: (state, action) => {
-      state.unshift({ id: Date.now(), title: action.payload.task, completed: false, color: "bg-gray-500", dueDate: action.payload.dueDate});
+      state.unshift({ id: Date.now(), title: action.payload.task, completed: false, dueDate: action.payload.dueDate});
       localStorage.setItem("tasks", JSON.stringify(state));
     },
 
@@ -25,7 +25,6 @@ const tasksSlice = createSlice({
       const task = state.find(task => task.id === action.payload);
       if (task) {
         task.completed = !task.completed;
-        task.color = task.completed ? "bg-green-500" : "bg-gray-500";
         localStorage.setItem("tasks", JSON.stringify(state))
       }
     },
